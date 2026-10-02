@@ -172,4 +172,43 @@ ok("M5 hour 08 scheduled = 180 crewed min", c5[8].scheduled_min == 180)
 ok("M5 hour 08 actual = 146 min", c5[8].actual_min == 146)
 ok("M5 hour 08 ratio = 0.8111", c5[8].ratio == 0.8111)
 
+
+print("== corpus: jurisdiction mappings ==")
+import os as _os, json as _json
+corpus_dir = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "corpus")
+
+def load_feed(name):
+    """Load a corpus feed as canonical JSON and validate against the schema."""
+    with open(_os.path.join(corpus_dir, name + ".feed.json")) as _f:
+        data = _json.load(_f)
+    _roster = [RosterRow(**r) for r in data.pop("roster", [])]
+    return Feed(**data), _roster
+
+# BC "Level Zero": zero units available -> M1 code_zero
+bc, _ = load_feed("bc_level_zero")
+cz_bc = code_zero(bc)
+ok("corpus BC: Level Zero -> M1 count = 1", cz_bc.count == 1)
+ok("corpus BC: M1 run = 17 minutes", cz_bc.total_min == 17 and cz_bc.max_run_min == 17)
+ok("corpus BC: M1 zones = 2 (H1, H2)", cz_bc.zones == 2)
+ok("corpus BC: M3 P1 mean = 3.0 min", response_times(bc)[1].mean_min == 3.0)
+
+# Ontario "offload delay" / ramping: ED gridlock -> M2/M4, and it zeroes the fleet
+on, _ = load_feed("ontario_offload_delay")
+od_on = offload_delays(on)["H1"]
+ok("corpus ON: offload delay -> M2 count = 3", od_on.count == 3)
+ok("corpus ON: M2 handover_wait mean = 12.5 min", od_on.handover_wait_mean_min == 12.5)
+ok("corpus ON: M2 handover_wait p95 = 13.0 min", od_on.handover_wait_p95_min == 13.0)
+ok("corpus ON: M2 unit_hold mean = 14.1667 min", round(od_on.unit_hold_mean_min, 4) == 14.1667)
+ok("corpus ON: M4 shield = 0.5667 (2550s hold / 4500s lost)", round(offload_share(on), 4) == 0.5667)
+ok("corpus ON: gridlock also zeroes the fleet (M1 = 20 min)", code_zero(on).total_min == 20)
+
+# Rural system status management: thin coverage -> M5 / M3
+ssm, roster_ssm = load_feed("ssm_sparse_coverage")
+c_ssm = coverage(ssm, roster_ssm)
+ok("corpus SSM: M3 P1 = 18 min (08:10 -> 08:28)", response_times(ssm)[1].mean_min == 18.0)
+ok("corpus SSM: M5 h8 scheduled = 120 crewed min", c_ssm[8].scheduled_min == 120)
+ok("corpus SSM: M5 h8 actual = 62 min", c_ssm[8].actual_min == 62)
+ok("corpus SSM: M5 h8 ratio = 0.5167", round(c_ssm[8].ratio, 4) == 0.5167)
+ok("corpus SSM: M5 h9 ratio = 0.975", round(c_ssm[9].ratio, 4) == 0.975)
+
 print(f"\n{'-'*40}\nALL {PASS} CHECKS PASSED")

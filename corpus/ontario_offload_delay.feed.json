@@ -1,0 +1,160 @@
+{
+  "agency": {
+    "id": "AGT-ON"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "agency_id": "AGT-ON"
+    },
+    {
+      "id": "U2",
+      "agency_id": "AGT-ON"
+    },
+    {
+      "id": "U3",
+      "agency_id": "AGT-ON"
+    }
+  ],
+  "hospitals": [
+    {
+      "id": "H1"
+    }
+  ],
+  "calls": [
+    {
+      "id": "C1",
+      "priority": 1,
+      "agency_id": "AGT-ON"
+    },
+    {
+      "id": "C2",
+      "priority": 1,
+      "agency_id": "AGT-ON"
+    },
+    {
+      "id": "C3",
+      "priority": 2,
+      "agency_id": "AGT-ON"
+    }
+  ],
+  "events": [
+    {
+      "ts": "2026-10-05T08:00:00+00:00",
+      "unit_id": "U1",
+      "type": "DISPATCHED",
+      "call_id": "C1"
+    },
+    {
+      "ts": "2026-10-05T08:03:00+00:00",
+      "unit_id": "U2",
+      "type": "DISPATCHED",
+      "call_id": "C2"
+    },
+    {
+      "ts": "2026-10-05T08:05:00+00:00",
+      "unit_id": "U3",
+      "type": "DISPATCHED",
+      "call_id": "C3"
+    },
+    {
+      "ts": "2026-10-05T08:04:00+00:00",
+      "unit_id": "U1",
+      "type": "ONSCENE",
+      "call_id": "C1"
+    },
+    {
+      "ts": "2026-10-05T08:07:00+00:00",
+      "unit_id": "U2",
+      "type": "ONSCENE",
+      "call_id": "C2"
+    },
+    {
+      "ts": "2026-10-05T08:09:00+00:00",
+      "unit_id": "U3",
+      "type": "ONSCENE",
+      "call_id": "C3"
+    },
+    {
+      "ts": "2026-10-05T08:06:00+00:00",
+      "unit_id": "U1",
+      "type": "DEPART_SCENE",
+      "call_id": "C1"
+    },
+    {
+      "ts": "2026-10-05T08:09:00+00:00",
+      "unit_id": "U2",
+      "type": "DEPART_SCENE",
+      "call_id": "C2"
+    },
+    {
+      "ts": "2026-10-05T08:11:00+00:00",
+      "unit_id": "U3",
+      "type": "DEPART_SCENE",
+      "call_id": "C3"
+    },
+    {
+      "ts": "2026-10-05T08:10:00+00:00",
+      "unit_id": "U1",
+      "type": "AT_HOSPITAL",
+      "call_id": "C1",
+      "hospital_id": "H1"
+    },
+    {
+      "ts": "2026-10-05T08:13:00+00:00",
+      "unit_id": "U2",
+      "type": "AT_HOSPITAL",
+      "call_id": "C2",
+      "hospital_id": "H1"
+    },
+    {
+      "ts": "2026-10-05T08:15:00+00:00",
+      "unit_id": "U3",
+      "type": "AT_HOSPITAL",
+      "call_id": "C3",
+      "hospital_id": "H1"
+    },
+    {
+      "ts": "2026-10-05T08:22:30+00:00",
+      "unit_id": "U1",
+      "type": "HANDOFF",
+      "call_id": "C1",
+      "hospital_id": "H1"
+    },
+    {
+      "ts": "2026-10-05T08:25:00+00:00",
+      "unit_id": "U2",
+      "type": "HANDOFF",
+      "call_id": "C2",
+      "hospital_id": "H1"
+    },
+    {
+      "ts": "2026-10-05T08:28:00+00:00",
+      "unit_id": "U3",
+      "type": "HANDOFF",
+      "call_id": "C3",
+      "hospital_id": "H1"
+    },
+    {
+      "ts": "2026-10-05T08:24:00+00:00",
+      "unit_id": "U1",
+      "type": "UNIT_CLEARED",
+      "call_id": "C1",
+      "hospital_id": "H1"
+    },
+    {
+      "ts": "2026-10-05T08:26:30+00:00",
+      "unit_id": "U2",
+      "type": "UNIT_CLEARED",
+      "call_id": "C2",
+      "hospital_id": "H1"
+    },
+    {
+      "ts": "2026-10-05T08:30:00+00:00",
+      "unit_id": "U3",
+      "type": "UNIT_CLEARED",
+      "call_id": "C3",
+      "hospital_id": "H1"
+    }
+  ]
+}

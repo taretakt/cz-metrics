@@ -39,6 +39,14 @@ It is gone from the schema, replaced by three unambiguous CAD events.
 | M4 | `offload_share`   | unit_hold seconds ÷ total unavailable unit-seconds (the shield metric) |
 | M5 | `coverage`        | actual available unit-minutes ÷ scheduled crewed unit-minutes, per hour |
 
+## Jurisdiction corpus
+
+`corpus/` proves the mapping claim: three synthetic feeds, each shaped by one
+jurisdiction's operational vocabulary — BC "Level Zero" (zero units available,
+M1), Ontario "offload delay" / ED gridlock (M2, M4), and a thin rural fleet
+under system status management (M5, M3). Every number in `corpus/README.md` is
+checked by the test gate. See `corpus/README.md` for the mapping table.
+
 ## Determinism rules
 
 - Epochs are 1-minute, aligned to UTC minute boundaries.
