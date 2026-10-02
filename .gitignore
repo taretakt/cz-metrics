@@ -1,0 +1,15 @@
+# venv / build artifacts
+.venv/
+dist/
+build/
+*.egg-info/
+
+# python caches
+__pycache__/
+*.py[cod]
+
+# scratch databases (kept out of the standard's test corpus)
+_*.db
+
+# OS noise
+.DS_Store
